@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript DOM Practice | Wasiq</title>
+  <meta name="description" content="A hands-on collection of JavaScript DOM manipulation exercises: color switching, timers, counters, and forms." />
+
+  <!-- Google Fonts: JetBrains Mono for labels/code feel, Inter for readable body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <p class="eyebrow">// dom-practice</p>
+      <h1 class="site-title">JavaScript DOM Playground</h1>
+      <p class="subtitle">Four small experiments in reading and changing the page with plain JavaScript.</p>
+
+      <button id="theme-toggle" class="pill-btn" type="button" aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-label">Dark mode</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap main-grid">
+
+    <!-- ============ MODULE 01: MANUAL + AUTO COLOR SWITCHER ============ -->
+    <section class="module" id="module-color" aria-labelledby="color-title">
+      <div class="module-head">
+        <span class="module-index">01</span>
+        <div>
+          <h2 id="color-title">Color Switcher</h2>
+          <p class="module-desc">Click a swatch to set the heading color by hand, or start the auto-cycle to watch <code>setInterval()</code> do it for you.</p>
+        </div>
+      </div>
+
+      <div class="demo-stage">
+        <h3 id="color-target">Hello!</h3>
+      </div>
+
+      <div class="control-row" id="color-buttons">
+        <button class="swatch" data-color="#ef4444" style="--swatch:#ef4444;">Red</button>
+        <button class="swatch" data-color="#22c55e" style="--swatch:#22c55e;">Green</button>
+        <button class="swatch" data-color="#3b82f6" style="--swatch:#3b82f6;">Blue</button>
+        <button class="swatch" data-color="#a855f7" style="--swatch:#a855f7;">Purple</button>
+        <button class="swatch" data-color="#f97316" style="--swatch:#f97316;">Orange</button>
+      </div>
+
+      <div class="control-row">
+        <button id="random-color" class="btn btn-secondary" type="button">🎲 Random color</button>
+        <button id="auto-cycle" class="btn btn-primary" type="button">▶ Start auto-cycle</button>
+      </div>
+
+      <div class="readout">
+        <p>Current color: <strong id="current-color-label">default</strong></p>
+        <p>History: <span id="color-history">—</span></p>
+      </div>
+    </section>
+
+    <!-- ============ MODULE 02: CLICK COUNTER ============ -->
+    <section class="module" id="module-counter" aria-labelledby="counter-title">
+      <div class="module-head">
+        <span class="module-index">02</span>
+        <div>
+          <h2 id="counter-title">Click Counter</h2>
+          <p class="module-desc">Every click updates the DOM directly. Every 10th click fires an alert &mdash; try the keyboard shortcut too.</p>
+        </div>
+      </div>
+
+      <div class="demo-stage">
+        <h3 id="counter-value">0</h3>
+      </div>
+
+      <div class="control-row">
+        <button id="counter-increment" class="btn btn-primary" type="button">+1 Count</button>
+        <button id="counter-reset" class="btn btn-secondary" type="button">Reset</button>
+      </div>
+
+      <p class="hint">Keyboard shortcut: press <kbd>C</kbd> anywhere on the page to add a count.</p>
+    </section>
+
+    <!-- ============ MODULE 03: GREETING FORM ============ -->
+    <section class="module" id="module-form" aria-labelledby="form-title">
+      <div class="module-head">
+        <span class="module-index">03</span>
+        <div>
+          <h2 id="form-title">Greeting Form</h2>
+          <p class="module-desc">A small form that reads user input on submit and reacts without reloading the page.</p>
+        </div>
+      </div>
+
+      <form id="greeting-form" class="greeting-form" novalidate>
+        <label for="name-input">Your name</label>
+        <div class="form-row">
+          <input
+            id="name-input"
+            name="name"
+            type="text"
+            placeholder="e.g. Wasiq"
+            autocomplete="off"
+            required
+          />
+          <button class="btn btn-primary" type="submit">Say hello</button>
+        </div>
+        <p id="form-error" class="form-error" role="alert" hidden>Please enter your name first.</p>
+      </form>
+
+      <div class="demo-stage" id="greeting-output">
+        <p class="muted">Your greeting will appear here.</p>
+      </div>
+    </section>
+
+    <!-- ============ MODULE 04: CONSOLE FEED (signature element) ============ -->
+    <section class="module module-console" id="module-console" aria-labelledby="console-title">
+      <div class="module-head">
+        <span class="module-index">04</span>
+        <div>
+          <h2 id="console-title">Activity Log</h2>
+          <p class="module-desc">Every action above is echoed here in real time &mdash; a quick way to see event listeners firing.</p>
+        </div>
+      </div>
+
+      <div class="console-feed" id="console-feed" aria-live="polite">
+        <p class="console-line console-boot">&gt; console ready. interact with a module above.</p>
+      </div>
+      <div class="control-row">
+        <button id="clear-log" class="btn btn-secondary" type="button">Clear log</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Built while learning JavaScript DOM manipulation &middot; <a href="https://github.com/" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
