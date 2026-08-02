@@ -20,7 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ================================================================
+<<<<<<< HEAD
    Shared Activity Log
+=======
+   Shared activity log
+>>>>>>> c6ed303a39001ab0d714030656dcc8ff3d17fe6c
    Every module below calls logActivity() so the visitor can see
    which event fired, in real time, without opening devtools.
    ================================================================ */
